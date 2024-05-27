@@ -28,6 +28,9 @@ public class HomeServlet extends HttpServlet {
 		
 		ArrayList<ArrayList<ProdottoBean>> categorie = new ArrayList<>();
 		String redirectedPage = request.getParameter("page");
+		 if ("META-INF/context.xml".equals(redirectedPage) || "WEB-INF/web.xml".equals(redirectedPage)) {
+	            redirectedPage = "index.jsp"; // Reindirizzamento verso una pagina sicura
+	        }
 		
 		try {
 			ArrayList<ProdottoBean> PS5 = dao.doRetrieveByPiattaforma("PlayStation 5");
